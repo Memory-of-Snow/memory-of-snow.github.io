@@ -1,0 +1,20 @@
+const composeReplyPost = (content, targetEvent) => {
+  /* Q-1: これまで学んだことを思い出しながら、
+          リプライを表現するイベントを組み立てよう */
+
+  //A-1.ここから
+  const ev = {
+    kind: 1,
+    content: content,
+    tags:[
+      ["e", targetEvent.id, ""],
+      ["p", targetEvent.pubkey, ""]
+    ],
+    created_at: currUnixtime(),
+  };
+
+  // イベントID(ハッシュ値)計算・署名
+  return finishEvent(ev, BOT_PRIVATE_KEY_HEX);
+
+  //A-1.ここまで
+};
